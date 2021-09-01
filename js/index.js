@@ -1,3 +1,4 @@
+//mouseover, mouseout, stopPropagation
 const mouseEvn = document.querySelectorAll('.img-content');
 mouseEvn.forEach(el => {
     el.addEventListener('mouseover', event => {
@@ -12,6 +13,7 @@ mouseEvn.forEach(el => {
     })
 })
 
+//keydown
 // creating shortcut for navigation, only active if the mouse is over the main-navigation
 const mosOvrNav = document.querySelector('.nav-container');
 document.addEventListener('keydown', navKey);
@@ -50,8 +52,35 @@ function zoom(event) {
     // event.target.style.backgroundColor = 'grey';
     event.target.style.transform = `scale(${scale})`;
 }
+
 //load & focus
 window.addEventListener('load', () => {
     document.querySelector('.nav a').focus();
-        // alert('Thanks for your visit');
   });
+
+//resize
+function windowSizeCheck() {
+    if(window.innerHeight < 299 || window.innerWidth < 509){
+        alert(`${window.innerHeight} x ${window.innerWidth} window is too small, don't you think?`)
+    }
+}
+window.addEventListener('resize', windowSizeCheck);
+//window.onresize = windowSizeCheck;
+
+//dblclick
+const card = document.querySelector('.content-section');
+
+card.addEventListener('dblclick', function (e) {
+   e.target.style.transform = 'scale(1.1)';
+});
+
+//click
+document.querySelector('.content-section').addEventListener('click', elem => elem.target.style.transform = 'scale(1)');
+
+//mouseenter mouseleave
+const undrLine = document.querySelectorAll('.nav a');
+undrLine.forEach(e => {
+    e.addEventListener('mouseenter', el => el.target.style.textDecoration = 'underline');
+    e.addEventListener('mouseenter', el => el.target.style.textDecorationStyle = 'wavy');
+    e.addEventListener('mouseleave', el => el.target.style.textDecoration = 'none');
+})
